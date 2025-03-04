@@ -1,0 +1,42 @@
+name: Build Release
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branch:
+      - master
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-android:
+    name: Build android-arm64
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+
+      - name: Check rust version
+        run: rustup --version
+
+      - name: Install target
+        run: rustup target add aarch64-linux-android
+
+      - name: Install ndk
+        run: cargo install cargo-ndk
+
+      - name: Build release
+        run: cargo ndk --target arm64-v8a --platform 28 build -vv --release
+        env:
+          RUST_BACKTRACE: 1
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: example-rquickjs-android
+          path: ./target/aarch64-linux-android/release/example-rquickjs-android
