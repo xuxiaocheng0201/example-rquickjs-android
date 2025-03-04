@@ -4,7 +4,4 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-rquickjs = "~0.9"
-
-[target.'cfg(target_os = "android")'.dependencies]
-rquickjs = { version = "~0.9", features = ["bindgen"] }
+rquickjs = { git = "https://github.com/Leojangh/rquickjs.git" }
