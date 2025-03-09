@@ -20,7 +20,9 @@ jobs:
         run: |
           sudo apt update
           sudo apt install libc6-dev
-          ls /usr/include/bits/libc-header-start.h
+
+      - name: Find header
+        run: sudo find / -name "libc-header-start.h"
 
       - name: Checkout
         uses: actions/checkout@v2
