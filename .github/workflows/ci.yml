@@ -16,6 +16,12 @@ jobs:
     name: Build android
     runs-on: ubuntu-latest
     steps:
+      - name: Install libc6 # ensure <bits/libc-header-start.h> exists.
+        run: |
+          sudo apt update
+          sudo apt install libc6-dev
+          ls /usr/include/bits/libc-header-start.h
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
@@ -34,4 +40,3 @@ jobs:
           CC: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang
           CXX: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang++
           AR: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar
-          RUSTCFLAG: "--sysroot ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
