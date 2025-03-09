@@ -27,16 +27,6 @@ jobs:
       - name: Install target
         run: rustup target add aarch64-linux-android # armv7-linux-androideabi x86_64-linux-android i686-linux-android
 
-      - name: Test env set
-        run: echo $CC
-        env:
-          CC: $ANDROID_NDK_HOME/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang
-
-      - name: Test env set
-        run: echo $CC
-        env:
-          CC: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang
-
       - name: Build arm64
         run: cargo build --target aarch64-linux-android --release -vv
         env:
@@ -44,3 +34,4 @@ jobs:
           CC: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang
           CXX: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang++
           AR: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar
+          RUSTCFLAG: "--sysroot ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/sysroot"
