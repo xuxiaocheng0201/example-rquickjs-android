@@ -23,18 +23,18 @@ jobs:
         run: rustup target add aarch64-linux-android # armv7-linux-androideabi x86_64-linux-android i686-linux-android
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions\\checkout@v2
         with:
           fetch-depth: 1
 
       - name: ls
         shell: bash
-        run: ls C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin
+        run: ls C:\\Android\\android-sdk\\ndk\\27.2.12479018\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin
 
       - name: Build arm64
         run: cargo build --target aarch64-linux-android --release -vv
         env:
           RUST_BACKTRACE: 1
-          CC: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang.cmd
-          CXX: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang++.cmd
-          AR: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ar
+          CC: C:\\Android\\android-sdk\\ndk\\27.2.12479018\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\aarch64-linux-android30-clang.cmd
+          CXX: C:\\Android\\android-sdk\\ndk\\27.2.12479018\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\aarch64-linux-android30-clang++.cmd
+          AR: C:\\Android\\android-sdk\\ndk\\27.2.12479018\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\llvm-ar
