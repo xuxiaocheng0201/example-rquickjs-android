@@ -22,12 +22,16 @@ jobs:
       - name: Install target
         run: rustup target add aarch64-linux-android # armv7-linux-androideabi x86_64-linux-android i686-linux-android
 
+      - name: Setup android
+        uses: android-actions/setup-android@v2
+
       - name: Checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 1
 
       - name: Build arm64
+        continue-on-error: true
         run: cargo build --target aarch64-linux-android --release -vv
         env:
           RUST_BACKTRACE: 1
@@ -36,3 +40,14 @@ jobs:
           CC_aarch64_linux_android: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang
           CXX_aarch64_linux_android: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang++
           AR_aarch64_linux_android: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar
+
+      - name: Build arm64
+        continue-on-error: true
+        run: cargo build --target aarch64-linux-android --release -vv
+        env:
+          RUST_BACKTRACE: 1
+          CLANG_PATH: /usr/local/lib/android/sdk/ndk/27.2.12479018/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang
+          CARGO_TARGET_AARCH64_LINUX_ANDROID_LINKER: /usr/local/lib/android/sdk/ndk/27.2.12479018/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang
+          CC_aarch64_linux_android: /usr/local/lib/android/sdk/ndk/27.2.12479018/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang
+          CXX_aarch64_linux_android: /usr/local/lib/android/sdk/ndk/27.2.12479018/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang++
+          AR_aarch64_linux_android: /usr/local/lib/android/sdk/ndk/27.2.12479018/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar
