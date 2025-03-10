@@ -30,8 +30,8 @@ jobs:
           export CC=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang
           export CXX=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang++
           export AR=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar
-          export CARGO_LINKER=${{ env.CC }}
-          export CLANG_PATH=${{ env.CC }}
+          export CARGO_LINKER=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang
+          export CLANG_PATH=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang
           cargo build --target aarch64-linux-android --release -vv
         env:
           RUST_BACKTRACE: full
@@ -42,8 +42,8 @@ jobs:
           export CC=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi30-clang
           export CXX=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi30-clang++
           export AR=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar
-          export CARGO_LINKER=${{ env.CC }}
-          export CLANG_PATH=${{ env.CC }}
+          export CARGO_LINKER=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi30-clang
+          export CLANG_PATH=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/armv7a-linux-androideabi30-clang
           cargo build --target armv7-linux-androideabi --release -vv
         env:
           RUST_BACKTRACE: full
@@ -54,8 +54,8 @@ jobs:
           export CC=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/x86_64-linux-android30-clang
           export CXX=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/x86_64-linux-android30-clang++
           export AR=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar
-          export CARGO_LINKER=${{ env.CC }}
-          export CLANG_PATH=${{ env.CC }}
+          export CARGO_LINKER=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/x86_64-linux-android30-clang
+          export CLANG_PATH=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/x86_64-linux-android30-clang
           cargo build --target x86_64-linux-android --release -vv
         env:
           RUST_BACKTRACE: full
@@ -66,8 +66,8 @@ jobs:
           export CC=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/i686-linux-android30-clang
           export CXX=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/i686-linux-android30-clang++
           export AR=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar
-          export CARGO_LINKER=${{ env.CC }}
-          export CLANG_PATH=${{ env.CC }}
+          export CARGO_LINKER=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/i686-linux-android30-clang
+          export CLANG_PATH=${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/i686-linux-android30-clang
           cargo build --target i686-linux-android --release -vv
         env:
           RUST_BACKTRACE: full
