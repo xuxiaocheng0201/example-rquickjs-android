@@ -14,7 +14,7 @@ env:
 jobs:
   build-android:
     name: Build android
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -31,7 +31,7 @@ jobs:
         run: cargo build --target aarch64-linux-android --release -vv
         env:
           RUST_BACKTRACE: 1
-          CC: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang
-          CXX: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/aarch64-linux-android30-clang++
-          AR: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-ar
-          C_INCLUDE_PATH: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/linux-x86_64/bin/sysroot/usr/include
+          CC: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang
+          CXX: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang++
+          AR: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ar
+          # C_INCLUDE_PATH: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/windows-x86_64/bin/sysroot/usr/include
