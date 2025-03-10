@@ -1,4 +1,4 @@
-name: Build Release
+name: Build
 
 permissions:
   contents: read
@@ -16,16 +16,16 @@ jobs:
     name: Build android
     runs-on: windows-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
-
       - name: Check rust version
         run: rustup --version
 
       - name: Install target
         run: rustup target add aarch64-linux-android # armv7-linux-androideabi x86_64-linux-android i686-linux-android
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
 
       - name: Build arm64
         run: cargo build --target aarch64-linux-android --release -vv
@@ -34,4 +34,4 @@ jobs:
           CC: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang
           CXX: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang++
           AR: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ar
-          # C_INCLUDE_PATH: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/windows-x86_64/bin/sysroot/usr/include
+          INCLUDE: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/windows-x86_64/bin/sysroot/usr/include
