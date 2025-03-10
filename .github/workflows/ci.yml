@@ -10,28 +10,38 @@ on:
 
 env:
   CARGO_TERM_COLOR: always
+  CC: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang
+  CXX: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang++
+  SYSROOT: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/sysroot
+  SDKROOT: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/sysroot
+  INCLUDE: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/sysroot
 
 jobs:
   build-android:
     name: Build android
     runs-on: windows-latest
     steps:
-      - name: Check rust version
-        run: rustup --version
+      - name: Check clang
+        continue-on-error: true
+        run: %CC% -E -x c - -v
 
-      - name: Install target
-        run: rustup target add aarch64-linux-android # armv7-linux-androideabi x86_64-linux-android i686-linux-android
+      - name: Check clang++
+        continue-on-error: true
+        run: %CXX% -E -x c++ - -v
 
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 1
-
-      - name: Build arm64
-        run: cargo build --target aarch64-linux-android --release -vv
-        env:
-          RUST_BACKTRACE: 1
-          CC: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang
-          CXX: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang++
-          AR: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ar
-          SYSROOT: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/sysroot
+#      - name: Check rust version
+#        run: rustup --version
+#
+#      - name: Install target
+#        run: rustup target add aarch64-linux-android # armv7-linux-androideabi x86_64-linux-android i686-linux-android
+#
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#        with:
+#          fetch-depth: 1
+#
+#      - name: Build arm64
+#        run: cargo build --target aarch64-linux-android --release -vv
+#        env:
+#          RUST_BACKTRACE: 1
+#          AR: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ar
