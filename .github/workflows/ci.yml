@@ -34,4 +34,4 @@ jobs:
           CC: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang
           CXX: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang++
           AR: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ar
-          INCLUDE: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/windows-x86_64/bin/sysroot/usr/include
+          SYSROOT: ${{ env.ANDROID_NDK_HOME }}/toolchains/llvm/prebuilt/windows-x86_64/bin/sysroot
