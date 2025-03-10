@@ -31,7 +31,7 @@ jobs:
         run: cargo build --target aarch64-linux-android --release -vv
         env:
           RUST_BACKTRACE: 1
-          CC: %ANDROID_NDK_HOME%/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang
-          CXX: %ANDROID_NDK_HOME%/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang++
-          AR: %ANDROID_NDK_HOME%/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ar
-          SYSROOT: %ANDROID_NDK_HOME%/toolchains/llvm/prebuilt/windows-x86_64/bin/sysroot
+          CC: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang
+          CXX: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/aarch64-linux-android30-clang++
+          AR: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/llvm-ar
+          SYSROOT: C:\Android\android-sdk\ndk\27.2.12479018/toolchains/llvm/prebuilt/windows-x86_64/bin/sysroot
