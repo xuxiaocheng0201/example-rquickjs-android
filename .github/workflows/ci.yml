@@ -23,7 +23,7 @@ jobs:
         run: rustup target add aarch64-linux-android # armv7-linux-androideabi x86_64-linux-android i686-linux-android
 
       - name: Checkout
-        uses: actions\\checkout@v2
+        uses: actions/checkout@v2
         with:
           fetch-depth: 1
 
